@@ -1,5 +1,8 @@
 # golang-ipc
  Golang Inter-process communication library for Window, Mac and Linux.
+ It is fork from:  james-barrow/golang-ipc to fix Windows client with -1 timeout issue
+
+
 
 
  ### Overview
