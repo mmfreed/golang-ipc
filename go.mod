@@ -1,6 +1,6 @@
 module github.com/mmfreed/golang-ipc
 
-go 1.22.2
+go 1.22
 
 require github.com/Microsoft/go-winio v0.6.2
 
