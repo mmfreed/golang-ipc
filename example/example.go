@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	ipc "github.com/mmfreed/golang-ipc"
+	ipc "github.com/mifreed/golang-ipc"
 )
 
 func main() {
