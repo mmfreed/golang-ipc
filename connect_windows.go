@@ -2,7 +2,6 @@ package ipc
 
 import (
 	"errors"
-	"strings"
 	"time"
 
 	"github.com/Microsoft/go-winio"
@@ -19,7 +18,7 @@ func (s *Server) run() error {
 
 	if s.unMask {
 		config = &winio.PipeConfig{SecurityDescriptor: "D:P(A;;GA;;;AU)"}
-	} 
+	}
 
 	listen, err := winio.ListenPipe(pipeBase+s.name, config)
 	if err != nil {
@@ -55,7 +54,7 @@ func (c *Client) dial() error {
 		pn, err := winio.DialPipe(pipeBase+c.Name, nil)
 		if err != nil {
 
-			if strings.Contains(err.Error(), "the system cannot find the file specified.") == true {
+			if stringContainsCaseInsensitive(err.Error(), "the system cannot find the file specified.") == true {
 
 			} else {
 				return err

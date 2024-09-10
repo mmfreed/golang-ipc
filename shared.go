@@ -1,6 +1,9 @@
 package ipc
 
-import "errors"
+import (
+	"errors"
+	"strings"
+)
 
 // returns the status of the connection as a string
 func (status *Status) String() string {
@@ -39,4 +42,12 @@ func checkIpcName(ipcName string) error {
 	}
 
 	return nil
+}
+
+// case-insensitive string contains() function
+func stringContainsCaseInsensitive(a string, b string) bool {
+	return strings.Contains(
+		strings.ToLower(a),
+		strings.ToLower(b),
+	)
 }

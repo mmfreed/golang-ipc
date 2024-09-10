@@ -7,7 +7,6 @@ import (
 	"errors"
 	"net"
 	"os"
-	"strings"
 	"syscall"
 	"time"
 )
@@ -56,7 +55,7 @@ func (c *Client) dial() error {
 	startTime := time.Now()
 
 	for {
-		
+
 		if c.timeout != 0 {
 
 			if time.Since(startTime).Seconds() > c.timeout {
@@ -68,9 +67,9 @@ func (c *Client) dial() error {
 		conn, err := net.Dial("unix", base+c.Name+sock)
 		if err != nil {
 
-			if strings.Contains(err.Error(), "connect: no such file or directory") {
+			if stringContainsCaseInsensitive(err.Error(), "connect: no such file or directory") {
 
-			} else if strings.Contains(err.Error(), "connect: connection refused") {
+			} else if stringContainsCaseInsensitive(err.Error(), "connect: connection refused") {
 
 			} else {
 				c.received <- &Message{Err: err, MsgType: -1}

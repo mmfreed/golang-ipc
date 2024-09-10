@@ -5,7 +5,6 @@ import (
 	"errors"
 	"io"
 	"log"
-	"strings"
 	"time"
 )
 
@@ -122,7 +121,7 @@ func (c *Client) readData(buff []byte) bool {
 
 	_, err := io.ReadFull(c.conn, buff)
 	if err != nil {
-		if strings.Contains(err.Error(), "EOF") { // the connection has been closed by the client.
+		if stringContainsCaseInsensitive(err.Error(), "EOF") { // the connection has been closed by the client.
 			c.conn.Close()
 
 			if c.status != Closing || c.status == Closed {
