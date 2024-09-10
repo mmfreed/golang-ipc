@@ -1,4 +1,4 @@
-module github.com/mifreed/golang-ipc
+module github.com/mmfreed/golang-ipc
 
 go 1.22.2
 
